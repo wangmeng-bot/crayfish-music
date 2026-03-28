@@ -1,6 +1,9 @@
 import { supabase, isSupabaseConfigured } from './supabase'
 import type { Database } from './database.types'
 
+// 重新导出 isSupabaseConfigured
+export { isSupabaseConfigured }
+
 type Profile = Database['public']['Tables']['profiles']['Row']
 type Song = Database['public']['Tables']['songs']['Row']
 type Comment = Database['public']['Tables']['comments']['Row']

@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { supabase, isSupabaseConfigured } from '../lib/supabase'
-import type { Database } from '../lib/database.types'
 
 export type NotificationType = 'like' | 'comment' | 'follow' | 'system' | 'milestone'
 
@@ -39,8 +38,8 @@ interface NotificationStore {
   disableRealtime: () => void
 }
 
-// 获取用户头像
-const getUserAvatar = async (userId: string): Promise<string | undefined> => {
+// 获取用户头像（暂未使用）
+const _getUserAvatar = async (userId: string): Promise<string | undefined> => {
   if (!isSupabaseConfigured()) return undefined
   try {
     const { data } = await supabase
@@ -279,7 +278,7 @@ export const useNotificationStore = create<NotificationStore>()(
         get().disableRealtime()
 
         // 订阅新通知
-        const channel = supabase
+        supabase
           .channel('notifications')
           .on(
             'postgres_changes',

@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { DEMO_LYRICS, parseLRC } from '../lib/lyrics'
-import { songService, isSupabaseConfigured } from '../lib/services'
+import { songService } from '../lib/services'
 
 interface LyricsStore {
   // 歌词来源
@@ -19,7 +19,7 @@ interface LyricsStore {
 
 export const useLyricsStore = create<LyricsStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       currentLyrics: DEMO_LYRICS, // 默认显示示例歌词
       originalLyrics: null,
       translationEnabled: true,
@@ -130,8 +130,7 @@ export function getTranslatedLyrics(lyrics: string | null, showTranslation: bool
   if (!lyrics || !showTranslation) return lyrics
   
   try {
-    const parsed = parseLRC(lyrics)
-    // 返回带翻译的歌词
+    // 解析歌词（暂不处理翻译）
     return lyrics
   } catch {
     return lyrics

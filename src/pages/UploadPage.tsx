@@ -65,7 +65,8 @@ export default function UploadPage() {
     }
   }
 
-  const handleLrcDrop = (e: React.DragEvent) => {
+  // LRC文件拖放处理（暂未使用）
+  const _handleLrcDrop = (e: React.DragEvent) => {
     e.preventDefault()
     const file = e.dataTransfer.files[0]
     if (file && (file.type === 'text/plain' || file.name.endsWith('.lrc'))) {

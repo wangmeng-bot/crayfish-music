@@ -4,11 +4,22 @@ import { Song, PlayMode } from '../types'
 import { mockSongs } from '../data/mockData'
 import { useLyricsStore } from './lyricsStore'
 
-// 播放历史项
-interface HistoryItem extends Song {
-  playedAt: string
+// 播放历史项（不继承Song，避免类型冲突）
+interface HistoryItem {
+  id: string
+  title: string
+  artist: string
+  album: string
+  coverUrl: string
+  audioUrl: string
+  duration: number
+  genre?: string
+  createdAt?: string
+  playCount?: number
+  likes?: number
   lrcUrl?: string | null
   plainLyrics?: string | null
+  playedAt: string
 }
 
 interface PlayerState {

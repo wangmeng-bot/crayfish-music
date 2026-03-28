@@ -7,6 +7,18 @@ import {
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
 import { usePlayerStore } from '../store/playerStore'
+import type { LucideIcon } from 'lucide-react'
+
+// 设置项类型
+interface BaseSettingItem {
+  icon: LucideIcon
+  label: string
+  description: string
+  type?: 'toggle' | 'slider' | 'color' | 'nav'
+  value?: boolean | number
+  onClick?: () => void
+  onChange?: (value: number) => void
+}
 
 export default function SettingsPage() {
   const navigate = useNavigate()
@@ -19,7 +31,7 @@ export default function SettingsPage() {
     navigate('/')
   }
 
-  const settingSections = [
+  const settingSections: { title: string; items: BaseSettingItem[] }[] = [
     {
       title: '账号',
       items: [

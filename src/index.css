@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0a0a0f;
+    color: #f0f0f5;
+    font-family: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+  }
+
+  /* 隐藏滚动条 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #141420;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3a3a5e;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+  }
+
+  /* 隐藏移动端滚动条 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input, textarea {
+    outline: none;
+  }
+
+  /* 移动端优化：禁止选择 */
+  button, a {
+    -webkit-touch-callout: none;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(20, 20, 32, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .card-glow {
+    transition: all 0.3s ease;
+  }
+  .card-glow:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tag-suno { background: rgba(109, 40, 217, 0.2); color: #c4b5fd; border: 1px solid rgba(109, 40, 217, 0.4); }
+  .tag-udio { background: rgba(14, 116, 144, 0.2); color: #67e8f9; border: 1px solid rgba(14, 116, 144, 0.4); }
+  .tag-musicgen { background: rgba(4, 120, 87, 0.2); color: #6ee7b7; border: 1px solid rgba(4, 120, 87, 0.4); }
+}
+
+/* 移动端安全区域 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* 移动端触摸反馈 */
+@media (hover: none) {
+  .active\:scale-90:active {
+    transform: scale(0.9);
+  }
+  .active\:scale-95:active {
+    transform: scale(0.95);
+  }
+  .active\:scale-\[0\.98\]:active {
+    transform: scale(0.98);
+  }
+}
+
+/* 移动端触摸优化 */
+@media (max-width: 768px) {
+  button, a {
+    cursor: default;
+  }
+  
+  /* 确保触摸目标足够大 */
+  button, .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* 防止iOS Safari 300ms点击延迟 */
+@media (hover: none) {
+  * {
+    touch-action: manipulation;
+  }
+}
+
+/* 全屏播放器动画 */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}

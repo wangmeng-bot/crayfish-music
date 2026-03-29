@@ -15,6 +15,10 @@ import CreatorPage from './pages/CreatorPage'
 import LeaderboardPage from './pages/LeaderboardPage'
 import SettingsPage from './pages/SettingsPage'
 import HistoryPage from './pages/HistoryPage'
+import AboutPage from './pages/AboutPage'
+import HelpPage from './pages/HelpPage'
+import PrivacyPage from './pages/PrivacyPage'
+import LanguagePage from './pages/LanguagePage'
 import { usePlayerStore } from './store/playerStore'
 import { useThemeStore } from './store/themeStore'
 
@@ -53,6 +57,14 @@ export default function App() {
             <Route path="/leaderboard" element={<LeaderboardPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/history" element={<HistoryPage />} />
+ 第 58 行: <Route path="/settings" element={<SettingsPage />} />
+第 59 行: <Route path="/history" element={<HistoryPage />} />
+第 60 行: <Route path="/about" element={<AboutPage />} />      ← 新增
+第 61 行: <Route path="/help" element={<HelpPage />} />        ← 新增
+第 62 行: <Route path="/privacy" element={<PrivacyPage />} />  ← 新增
+第 63 行: <Route path="/language" element={<LanguagePage />} /> ← 新增
+第 64 行: </Routes>
+
           </Routes>
         </main>
 

@@ -99,10 +99,14 @@ export default function SettingsPage() {
       title: '通用',
       items: [
         {
-          icon: Globe,
-          label: '语言',
-          description: '简体中文',
-          type: 'nav',
+         {
+  icon: Globe,
+  label: '语言',
+  description: '简体中文',
+  type: 'nav',
+  onClick: () => navigate('/language'),
+},
+
         },
         {
           icon: Download,

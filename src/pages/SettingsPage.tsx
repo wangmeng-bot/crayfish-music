@@ -120,10 +120,14 @@ export default function SettingsPage() {
       title: '关于',
       items: [
         {
-          icon: Info,
-          label: '关于我们',
-          description: '小龙虾音乐 v1.0.0',
-          type: 'nav',
+         {
+  icon: Info,
+  label: '关于我们',
+  description: 'AITune v1.0.0',
+  type: 'nav',
+  onClick: () => navigate('/about'),
+},
+
         },
         {
           icon: HelpCircle,

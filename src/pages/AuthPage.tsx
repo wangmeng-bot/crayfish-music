@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Mail, Lock, User, ArrowRight, Music2, Eye, EyeOff } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
+import { isSupabaseConfigured } from '../lib/supabase'
 import { cn } from '../lib/utils'
-
 export default function AuthPage() {
   const navigate = useNavigate()
   const { login, register, isLoading, error, clearError } = useAuthStore()
@@ -167,13 +167,14 @@ export default function AuthPage() {
               )}
             </button>
           </form>
-
-          {/* Demo Hint */}
-          <div className="mt-6 p-3 rounded-lg bg-accent-cyan/10 border border-accent-cyan/20">
-            <p className="text-xs text-accent-cyan text-center">
-              💡 演示模式：输入任意邮箱和密码即可登录
-            </p>
-          </div>
+                  {/* Demo Hint - 仅在未配置 Supabase 时显示 */}
+          {!isSupabaseConfigured() && (
+            <div className="mt-6 p-3 rounded-lg bg-accent-cyan/10 border border-accent-cyan/20">
+              <p className="text-xs text-accent-cyan text-center">
+                💡 演示模式：输入任意邮箱和密码即可登录
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Footer */}

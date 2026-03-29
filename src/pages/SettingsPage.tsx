@@ -130,16 +130,24 @@ export default function SettingsPage() {
 
         },
         {
-          icon: HelpCircle,
-          label: '帮助与反馈',
-          description: '常见问题、联系客服',
-          type: 'nav',
+         {
+  icon: HelpCircle,
+  label: '帮助与反馈',
+  description: '常见问题、联系客服',
+  type: 'nav',
+  onClick: () => navigate('/help'),
+},
+
         },
         {
-          icon: Shield,
-          label: '隐私政策',
-          description: '了解我们如何保护您的隐私',
-          type: 'nav',
+         {
+  icon: Shield,
+  label: '隐私政策',
+  description: '了解我们如何保护您的隐私',
+  type: 'nav',
+  onClick: () => navigate('/privacy'),
+},
+
         },
       ]
     },
